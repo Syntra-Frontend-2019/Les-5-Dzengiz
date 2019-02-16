@@ -40,7 +40,7 @@
             // Generate the to-do object
             const objectToAdd = {};
 
-            // Fetch the values from the input fields
+            // Create the keys & fetch-assign the values from the input fields
             objectToAdd.todo = todoInput.value;
             objectToAdd.todoDesc = todoDesc.value;
 
@@ -50,7 +50,7 @@
             // Add the information from the array to the to-do list content
             generateTodoListContent();
 
-            // Add the content to the todoList
+            // Visualize the content of the todoList as list-items
             showTodos();
 
             // Clear the inputs
