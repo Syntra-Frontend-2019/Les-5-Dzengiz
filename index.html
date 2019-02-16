@@ -5,14 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-    <input type="text" id="todoInput">
-    <br><br>
-    <textarea name="todoDesc" id="todoDesc" cols="30" rows="10"></textarea>
-    <br><br>
-    <button id="addTodoButton" onClick="addTodo()">Add todo</button>
-    <br><br>
-    <ul id="todoList"></ul>
+    <div>
+        <label for="todoInput">Todo item</label>
+        <input type="text" id="todoInput" name="todoInput">
 
+        <br><br>
+
+        <label for="todoDesc">Todo description</label>
+        <textarea name="todoDesc" id="todoDesc" cols="30" rows="10"></textarea>
+
+        <br><br>
+
+        <button id="addTodoButton" onClick="addTodo()">Add todo</button>
+        <br><br>
+
+
+        <ul id="todoList"></ul>
+    </div>
+    
     <script>
         // Fetch elements from the dom
         const todoInput = document.getElementById("todoInput");
@@ -54,7 +64,7 @@
 
             // Recreate the content
             todoArray.forEach((todo, index) => {
-                todoListContent += `<li onClick="removeTodo(${index})">${todoArray[index].todo} - ${todoArray[index].todoDesc}</li>`
+                todoListContent += `<li onClick="removeTodo(${index})">${todo.todo} - ${todo.todoDesc}</li>`
             });
         };
 
