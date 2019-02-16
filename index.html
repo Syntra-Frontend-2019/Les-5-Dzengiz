@@ -2,9 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Les 5</title>
+    <title>Title</title>
 </head>
 <body>
-    
+    <input type="text" id="todoInput">
+    <br><br>
+    <textarea name="todoDesc" id="todoDesc" cols="30" rows="10"></textarea>
+    <br><br>
+    <button id="addTodoButton" onClick="addTodo()">Add todo</button>
+    <br><br>
+    <ul id="todoList"></ul>
+
+    <script>
+        // Fetch elements from the dom
+        const todoInput = document.getElementById("todoInput");
+        const todoDesc = document.getElementById("todoDesc");
+        const todoList = document.getElementById("todoList");
+
+        // Initialize the todoArray
+        let todoArray = [];
+
+        // Initialize the content for the to-do list
+        let todoListContent;
+
+        // Functionality to add a to-do
+        const addTodo = () => {
+            // Generate the to-do object
+            const objectToAdd = {};
+
+            // Fetch the values from the input fields
+            objectToAdd.todo = todoInput.value;
+            objectToAdd.todoDesc = todoDesc.value;
+
+            // Add the object to the array
+            todoArray.push(objectToAdd);
+
+            // Add the information from the array to the to-do list content
+            generateTodoListContent();
+
+            // Add the content to the todoList
+            showTodos();
+
+            // Clear the inputs
+            clearInputs();
+        };
+
+        // Funcionality to generate the todoListContent
+        const generateTodoListContent = () => {
+            // Clear the todoListContent
+            todoListContent = '';
+
+            // Recreate the content
+            todoArray.forEach((todo, index) => {
+                todoListContent += `<li onClick="removeTodo(${index})">${todoArray[index].todo} - ${todoArray[index].todoDesc}</li>`
+            });
+        };
+
+
+        // Functionality to clear the inputs
+        const clearInputs = () => {
+            todoInput.value = '';
+            todoDesc.value = '';
+        };
+
+
+        // Functionality to show the todos
+        const showTodos = () => {
+            todoList.innerHTML = todoListContent;
+        };
+
+
+        // Functionality to remove a todoItem & refresh the todoList
+        const removeTodo = (index) => {
+            // Remove the todoItem from the array
+            todoArray.splice(index, 1);
+
+            // Generate the todoListContent
+            generateTodoListContent();
+
+            // Show the new todoList
+            showTodos()
+        }
+    </script>
 </body>
 </html>
