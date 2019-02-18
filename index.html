@@ -57,6 +57,7 @@
             clearInputs();
         };
 
+
         // Functionality to generate the todoListContent
         const generateTodoListContent = () => {
             // Clear the todoListContent
@@ -64,7 +65,7 @@
 
             // Recreate the content
             todoArray.forEach((todo, index) => {
-                todoListContent += `<li onClick="removeTodo(${index})">${todo.todo} - ${todo.todoDesc}</li>`
+                todoListContent += `<li onClick="removeTodo(${index})"><strong>${todo.todo}</strong> - ${todo.todoDesc}</li>`
             });
         };
 
